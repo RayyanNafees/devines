@@ -1,6 +1,6 @@
 flask
 gunicorn
-# flask-mail
-# mysql.connector
-# psycopg2
-# requests
+flask-mail
+mysql.connector
+psycopg2
+requests
