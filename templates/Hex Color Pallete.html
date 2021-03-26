@@ -1,0 +1,209 @@
+<style>
+    body {
+        background: #e8eff5;
+        transition: 1s;
+    }
+    /* All Selectors */
+    
+    * {
+        padding: 0;
+        margin: 0;
+        font-size: 16px;
+        color: black;
+    }
+    /* Header */
+    
+    .header {
+        /* Flex property */
+        display: flex;
+        justify-content: center;
+        margin: auto;
+        border-radius: 35px;
+    }
+    
+    .header>p {
+        font-size: 20px;
+        padding: 10px;
+    }
+    /* Color Displayer */
+    
+    #body {
+        height: 115px;
+        width: 90%;
+        border-radius: 10px;
+        font-size: 30px;
+        font-weight: bold;
+        background: #000000;
+        box-shadow: -4px -4px 10px #fff, 7px 7px 15px #bbcfda;
+        transition: 1s;
+    }
+    
+    #body:hover {
+        border: 3px solid black;
+    }
+    /* Lines */
+    
+    .line {
+        padding: 6px;
+        margin: 10px auto;
+        width: 40%;
+        border-radius: 35px;
+        /* Neumorphism */
+        background: #e8eff5;
+        box-shadow: -3px -0px 8px #fff, 3px 3px 8px #bbcfda;
+    }
+    /* Buttons Container */
+    
+    .container p {
+        padding: 10px;
+        font-size: 20px;
+    }
+    
+    .btns {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 5px 5px;
+        margin: 10px 10px;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+    /* buttons */
+    
+    button {
+        text-align: center;
+        outline: 0;
+        font-size: 20px;
+        padding: 8px;
+        border: none;
+        border-radius: 8px;
+        width: 60px;
+        /*height: 60px; */
+        /* Neumorphism */
+        background: #e8eff5;
+        box-shadow: -3px -3px 8px #fff, 3px 3px 8px #bbcfda;
+    }
+    /* Alphabets buttons */
+    
+    .alp {
+        background: #727272;
+        color: white;
+    }
+    /* Inputs */
+    
+    input {
+        padding: 10px;
+        width: 50%;
+        text-align: center;
+        outline: 0;
+        border-radius: 35px;
+        border: none;
+        /* Neumorphism */
+        background: #e8eff5;
+        box-shadow: inset -3px -3px 8px #fff, inset 3px 3px 8px #bbcfda;
+    }
+    
+    .clr,
+    .view {
+        padding: 7px;
+        text-align: center;
+        outline: 0;
+        border: none;
+        width: 38%;
+        border-radius: 40px;
+        /* Neumorphism */
+        box-shadow: -3px -3px 8px #fff, 3px 3px 8px #bbcfda;
+    }
+    
+    .clr:hover,
+    .view:hover,
+    button:hover {
+        /* Neumorphism OFFS on Hover */
+        box-shadow: -2px -2px 6px #fff, 2px 2px 7px #bbcfda;
+        border: 1px solid #727272;
+    }
+</style>
+
+
+<body>
+
+    <!-- Heading -->
+    <div class="header">
+        <p>Hex Color Palette</p>
+    </div>
+
+    <!-- Background Color -->
+    <center>
+        <div id="body"></div>
+        <div class="line"></div>
+    </center>
+    <!-- Hex Values Container -->
+    <div class="container">
+        <center>
+            <p class="col">- Enter 💜 Values -</p>
+        </center>
+        <center><input type="text" id="inp" value="#000000" maxLength="7" readonly />
+            <center>
+                <!-- All Buttons -->
+                <div class="btns">
+                    <button>0</button>
+                    <button>1</button>
+                    <button>2</button>
+                    <button>3</button>
+                </div>
+                <div class="btns">
+                    <button>4</button>
+                    <button>5</button>
+                    <button>6</button>
+                    <button>7</button>
+                </div>
+                <div class="btns">
+                    <button>8</button>
+                    <button>9</button>
+                    <button class="alp">A</button>
+                    <button class="alp">B</button>
+                </div>
+                <div class="btns">
+                    <button class="alp">C</button>
+                    <button class="alp">D</button>
+                    <button class="alp">E</button>
+                    <button class="alp">F</button>
+                </div>
+                <!-- Clear and View Buttons -->
+                <div class="btns">
+                    <input type="button" class="clr" value="Clear" onclick="clr()" />
+                    <input type="button" class="view" value="View" onclick="display()" />
+                </div>
+            </center>
+        </center>
+    </div>
+
+
+    <script>
+        // All Variables Declarations
+        var buttons = document.getElementsByTagName('button');
+        var input = document.getElementById('inp');
+        var body = document.getElementById('body');
+
+        /* Loop Through all Buttons,
+        and add an onclick function to it...
+        */
+        for (var i = 0; i < buttons.length; i++) {
+            buttons[i].onclick = function() {
+                input.value += this.innerText;
+            }
+        }
+        // Clear input Button 
+        function clr() {
+            input.value = '#';
+            body.style.background = "#000000";
+        }
+        // View Color Button 
+        function display() {
+            if (input.value.length > 7) {
+                input.value = input.value.substr(0, input.value.length = 7);
+            }
+            body.style.backgroundColor = input.value;
+        }
+    </script>
+</body>

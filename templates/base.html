@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>David's Projects</title>
+    <script src="../static/jquery.js"></script>
+    <link rel="stylesheet" href="../static/BondStyle.css" />
+</head>
+
+<body>
+
+    <span class="tribar" onclick="$('.sidenav').width('250px')" style="font-size:30px">&#9776; Open Menu</span>
+    <div class="sidenav">
+        <a href="javascript:void(0)" class="close" onclick="$('.sidenav').width('0')">&times;</a> {% for i in pages %}
+        <a>{{i}}</a> {% endfor %}
+    </div>
+
+    <div id="Bond"></div>
+
+    <footer style="color:grey;font-size:smaller;font-family:Arial, Helvetica, sans-serif;position:absolute;bottom:0">
+        <i>Ryan's gift to Afolabi David &hearts;...</i>
+    </footer>
+
+    <script>
+        $('.sidenav a').click(function() {
+            $.post('/snippet/' + $(this).text() + '.html', src => $('#Bond').html(src));
+
+        });
+    </script>
+
+</body>
+
+</html>

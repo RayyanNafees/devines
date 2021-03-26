@@ -1,0 +1,153 @@
+<style>
+    body {
+        font-size: 15pt;
+        background: #FFAB00;
+        background-attachment: fixed;
+    }
+    /* Header */
+    
+    h3,
+    .dave {
+        border-radius: 10px;
+        background: black;
+        color: white;
+        padding: 10px;
+        width: 190px;
+        margin: 4px 6px;
+    }
+    
+    .dave {
+        width: 95px;
+    }
+    /* Percents */
+    
+    .cont {
+        margin: auto;
+        height: 70px;
+        border-radius: 10px;
+        border: 3px solid black;
+    }
+    
+    #perc {
+        color: white;
+        text-align: center;
+        height: 100%;
+        background: black;
+        border-radius: 5px;
+        width: 50%;
+        transition: 1.4s;
+        margin: 0;
+        padding: 0;
+    }
+    
+    button,
+    input {
+        padding: 10px;
+        border-radius: 50%;
+        height: 70px;
+        width: 70px;
+        outline: 0;
+        border: 3px solid black;
+        background: black;
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+    
+    button:hover,
+    input:hover {
+        border: 3px solid white;
+        border-radius: 10px;
+    }
+    /* Text Input */
+    
+    #inp {
+        border-radius: 0px;
+        border: none;
+        border-bottom: 4px solid black;
+        height: 0;
+        width: 60px;
+        padding: 18px;
+        background: transparent;
+        color: black;
+        text-align: left;
+    }
+    /* Buttons Container */
+    
+    .btns {
+        display: flex;
+        justify-content: center;
+        margin: 5px 5px;
+    }
+</style>
+
+
+<body>
+    <h3>Percentage Filler</h3>
+    <div class="cont">
+        <div id="perc">
+            <center>50%</center>
+        </div>
+    </div>
+    <center><input type="text" id="inp" readonly/></center>
+    <div class="btns">
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+    </div>
+    <div class="btns">
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+    </div>
+    <div class="btns">
+        <button>7 </button>
+        <button>8</button>
+        <button>9</button>
+    </div>
+    <div class="btns">
+        <input type="button" id="clr" value="X" onclick="clr()" />
+        <button>0</button>
+        <input type="button" id="fill" value="Fill" onclick="fill()" />
+    </div><br />
+    <center>
+        <div class="dave">DAVID - JS</div>
+    </center>
+    <script>
+        var buttons = document.getElementsByTagName('button');
+        var input = document.getElementById('inp');
+        var percent = document.getElementById('perc');
+
+        // Access all buttons
+        for (var i = 0; i < buttons.length; i++) {
+            buttons[i].onclick = function() {
+                input.value += this.innerText;
+            }
+        }
+        /* ----------- COOL ------------ */
+
+
+        // Functions 
+        function clr() {
+            input.value = '';
+        }
+        /*-- COORECT --*/
+        function fill() {
+            percent.style.backgroundColor = "black";
+            percent.style.width = input.value + "%";
+            if (input.value.length === 0) {
+                percent.innerText = "Empty Percentage";
+                percent.style.width = "100%";
+            } else if (input.value > 100) {
+                percent.innerText = "Wrong Percentage";
+                percent.style.width = "100%";
+                percent.style.backgroundColor = "#B71C1C";
+                input.value = '';
+            } else {
+                percent.innerText = input.value + "%";
+                input.value = "";
+            }
+        }
+    </script>
+</body>
